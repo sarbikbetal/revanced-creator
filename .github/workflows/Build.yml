@@ -26,26 +26,29 @@ jobs:
           sudo apt-get upgrade
           sudo apt install curl grep
 
-       - name: Build youtube variant
-         run: |
-          # curl -OL https://github.com/XDream8/revanced-creator/releases/download/keystores/revanced-creator.keystore
-          # export additional_args="--keystore=revanced-creator.keystore"
-          sh -c "$(curl https://raw.githubusercontent.com/XDream8/revanced-creator/main/patch.sh)"
-          curl -OL https://github.com/XDream8/revanced-creator/releases/download/youtube/vanced-microg.apk
+      #  - name: Build youtube variant
+      #    run: |
+      #     # curl -OL https://github.com/XDream8/revanced-creator/releases/download/keystores/revanced-creator.keystore
+      #     # export additional_args="--keystore=revanced-creator.keystore"
+      #     sh -c "$(curl https://raw.githubusercontent.com/XDream8/revanced-creator/main/patch.sh)"
+      #     curl -OL https://github.com/XDream8/revanced-creator/releases/download/youtube/vanced-microg.apk
 
-       - name: Upload Build Artifact(youtube)
-         uses: actions/upload-artifact@v3
-         with:
-           name: revanced-youtube
-           path: |
-            revanced-*-non-root.apk
-            vanced-microg.apk
+      #  - name: Upload Build Artifact(youtube)
+      #    uses: actions/upload-artifact@v3
+      #    with:
+      #      name: revanced-youtube
+      #      path: |
+      #       revanced-*-non-root.apk
+      #       vanced-microg.apk
 
-       - name: Build youtube-music variant
+       - name: Build youtube-music custom variant
          run: |
           # curl -OL https://github.com/XDream8/revanced-creator/releases/download/keystores/revanced-creator-music.keystore
           # export additional_args="--keystore=revanced-creator-music.keystore"
-          export what_to_patch="youtube-music"
+          curl https://github.com/sarbikbetal/revanced-creator/releases/download/v0.0.1/yt-music-wear-5.22.42.apk -O
+          export what_to_patch="custom"
+          export apk_filename=yt-music-wear-5.22.42.apk
+          export output_apk=revanced-music-5.22.42-non-root.apk
           sh -c "$(curl https://raw.githubusercontent.com/XDream8/revanced-creator/main/patch.sh)"
 
        - name: Upload Build Artifact(YouTube-Music)
@@ -54,39 +57,39 @@ jobs:
            name: revanced-music
            path: revanced-music-*-non-root.apk
 
-       - name: Build reddit variant
-         run: |
-          # curl -OL https://github.com/XDream8/revanced-creator/releases/download/keystores/revanced-creator-reddit.keystore
-          # export additional_args="--keystore=revanced-creator-reddit.keystore"
-          export what_to_patch="reddit"
-          sh -c "$(curl https://raw.githubusercontent.com/XDream8/revanced-creator/main/patch.sh)"
+      #  - name: Build reddit variant
+      #    run: |
+      #     # curl -OL https://github.com/XDream8/revanced-creator/releases/download/keystores/revanced-creator-reddit.keystore
+      #     # export additional_args="--keystore=revanced-creator-reddit.keystore"
+      #     export what_to_patch="reddit"
+      #     sh -c "$(curl https://raw.githubusercontent.com/XDream8/revanced-creator/main/patch.sh)"
 
-       - name: Upload Build Artifact(Reddit)
-         uses: actions/upload-artifact@v3
-         with:
-           name: revanced-reddit
-           path: revanced-reddit-*-non-root.apk
+      #  - name: Upload Build Artifact(Reddit)
+      #    uses: actions/upload-artifact@v3
+      #    with:
+      #      name: revanced-reddit
+      #      path: revanced-reddit-*-non-root.apk
 
-       - name: Build twitter variant
-         run: |
-          # curl -OL https://github.com/XDream8/revanced-creator/releases/download/keystores/revanced-creator-twitter.keystore
-          # export additional_args="--keystore=revanced-creator-twitter.keystore"
-          export what_to_patch="twitter"
-          sh -c "$(curl https://raw.githubusercontent.com/XDream8/revanced-creator/main/patch.sh)"
+      #  - name: Build twitter variant
+      #    run: |
+      #     # curl -OL https://github.com/XDream8/revanced-creator/releases/download/keystores/revanced-creator-twitter.keystore
+      #     # export additional_args="--keystore=revanced-creator-twitter.keystore"
+      #     export what_to_patch="twitter"
+      #     sh -c "$(curl https://raw.githubusercontent.com/XDream8/revanced-creator/main/patch.sh)"
 
-       - name: Upload Build Artifact(Twitter)
-         uses: actions/upload-artifact@v3
-         with:
-           name: revanced-twitter
-           path: revanced-twitter-*-non-root.apk
+      #  - name: Upload Build Artifact(Twitter)
+      #    uses: actions/upload-artifact@v3
+      #    with:
+      #      name: revanced-twitter
+      #      path: revanced-twitter-*-non-root.apk
 
-       - name: Build tiktok variant
-         run: |
-          export what_to_patch="tiktok"
-          sh -c "$(curl https://raw.githubusercontent.com/XDream8/revanced-creator/main/patch.sh)"
+      #  - name: Build tiktok variant
+      #    run: |
+      #     export what_to_patch="tiktok"
+      #     sh -c "$(curl https://raw.githubusercontent.com/XDream8/revanced-creator/main/patch.sh)"
 
-       - name: Upload Build Artifact(TikTok)
-         uses: actions/upload-artifact@v3
-         with:
-           name: revanced-tiktok
-           path: revanced-tiktok-*-non-root.apk
+      #  - name: Upload Build Artifact(TikTok)
+      #    uses: actions/upload-artifact@v3
+      #    with:
+      #      name: revanced-tiktok
+      #      path: revanced-tiktok-*-non-root.apk
